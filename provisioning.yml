@@ -1,5 +1,30 @@
 ---
-- hosts: all
+- hosts: database
+  tasks:
+    - name: 'Instala os programas'
+      apt:
+        name: "{{ item }}"
+        state: latest
+      become: yes
+      with_items:
+        - mysql-server-5.6
+        - python-mysqldb
+
+    - name: 'Cria o banco do MySQL'
+      mysql_db:
+        name: wordpress_db
+        login_user: root
+        state: present
+
+    - name: 'Cria o usuário do MySQL'
+      mysql_user:
+        login_user: root
+        name: wordpress_user
+        password: 12345
+        priv: 'wordpress_db.*:ALL'
+        state: present
+
+- hosts: wordpress
   handlers:
     - name: restart apache
       service:
@@ -20,23 +45,7 @@
         - php5-gd
         - libssh2-php
         - php5-mcrypt
-        - mysql-server-5.6
-        - python-mysqldb
         - php5-mysql
-
-    - name: 'Cria o banco do MySQL'
-      mysql_db:
-        name: wordpress_db
-        login_user: root
-        state: present
-
-    - name: 'Cria o usuário do MySQL'
-      mysql_user:
-        login_user: root
-        name: wordpress_user
-        password: 12345
-        priv: 'wordpress_db.*:ALL'
-        state: present
 
     - name: 'Baixa o arquivo de instalacao do Wordpress'
       get_url:
