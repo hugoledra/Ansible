@@ -1,4 +1,12 @@
 ---
+#- hosts: all
+#  tasks:
+#    - name: 'Apt-Get Update'
+#      apt:
+#        update_cache: yes
+#      become: yes
+
+
 - hosts: database
   handlers:
     - name: restart mysql
