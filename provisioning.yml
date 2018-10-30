@@ -108,22 +108,14 @@
       become: yes
 
     - name: 'Configura Apache para servir o Wordpress'
-      copy:
-        src: 'files/000-default.conf'
+      template:
+        src: 'templates/000-default.conf.j2'
         dest: '/etc/apache2/sites-available/000-default.conf'
       become: yes
       notify:
         - restart apache
        
-
-        
-# Modelo simples de instalção usando o APT:    
-#    - name: 'Instala o modphp'
-#      apt:
-#        name: libapache2-mod-php5
-#        state: latest
-#      become: yes     
-
+  
 #    - name: 'Arquivo Hello'
 #      shell: 'echo hello > /vagrant/hello.txt'
 
