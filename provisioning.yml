@@ -1,10 +1,10 @@
 ---
-#- hosts: all
-#  tasks:
-#    - name: 'Apt-Get Update'
-#      apt:
-#        update_cache: yes
-#      become: yes
+- hosts: all
+  tasks:
+    - name: 'Apt-Get Update'
+      apt:
+        update_cache: yes
+      become: yes
 
 
 - hosts: database
@@ -116,7 +116,4 @@
         - restart apache
        
   
-#    - name: 'Arquivo Hello'
-#      shell: 'echo hello > /vagrant/hello.txt'
-
 # become significa a execução como usuário root.
