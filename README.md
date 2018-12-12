@@ -11,7 +11,8 @@ At the end of this project, we will have two virtual machines, one to provide th
 Ansible - Vagrant - Virtual Box
 
 #### Run this project
-- $vagrant up
-- $ansible-playbook -i hosts provisioning.yml
-
+```
+$vagrant up
+$ansible-playbook -i hosts provisioning.yml
+```
 ###### This project is based on the Alura course > [Ansible Course: Your Infrastructure as a Code](https://cursos.alura.com.br/course/infraestrutura-como-codigo-com-ansible)
