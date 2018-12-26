@@ -15,4 +15,6 @@ Ansible - Vagrant - Virtual Box
 $vagrant up
 $ansible-playbook -i hosts provisioning.yml
 ```
+Access the services in the urls file: [urls](https://github.com/hugoledra/Ansible-AluraCourse/blob/master/urls)
+
 ###### This project is based on the Alura course > [Ansible Course: Your Infrastructure as a Code](https://cursos.alura.com.br/course/infraestrutura-como-codigo-com-ansible)
